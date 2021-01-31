@@ -30,6 +30,7 @@
 		8DD39FE225C6996A0090B845 /* Favourite+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD39FE025C6996A0090B845 /* Favourite+CoreDataClass.swift */; };
 		8DD39FE325C6996A0090B845 /* Favourite+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD39FE125C6996A0090B845 /* Favourite+CoreDataProperties.swift */; };
 		8DD39FFE25C6B18F0090B845 /* CityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD39FFD25C6B18F0090B845 /* CityViewController.swift */; };
+		8DD3A00C25C6C1F40090B845 /* FavouriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD3A00B25C6C1F40090B845 /* FavouriteCell.swift */; };
 		8DF1A4E325C61101006B0261 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF1A4E225C61101006B0261 /* AppDelegate.swift */; };
 		8DF1A4E725C61101006B0261 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF1A4E625C61101006B0261 /* HomeViewController.swift */; };
 		8DF1A4EA25C61101006B0261 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DF1A4E825C61101006B0261 /* Main.storyboard */; };
@@ -81,6 +82,7 @@
 		8DD39FE025C6996A0090B845 /* Favourite+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favourite+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8DD39FE125C6996A0090B845 /* Favourite+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favourite+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8DD39FFD25C6B18F0090B845 /* CityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewController.swift; sourceTree = "<group>"; };
+		8DD3A00B25C6C1F40090B845 /* FavouriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteCell.swift; sourceTree = "<group>"; };
 		8DF1A4DF25C61101006B0261 /* WeatherMQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherMQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DF1A4E225C61101006B0261 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8DF1A4E625C61101006B0261 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				8DA5B23C25C67C67009272CD /* FavouriteViewController.swift */,
 				8DA5B24425C67CD5009272CD /* FavouriteViewModel.swift */,
 				8DA5B25225C67F5D009272CD /* PinAnnotationView.swift */,
+				8DD3A00B25C6C1F40090B845 /* FavouriteCell.swift */,
 			);
 			path = AddFavavourite;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 				8DA5B24525C67CD5009272CD /* FavouriteViewModel.swift in Sources */,
 				8DA5B18D25C615EF009272CD /* LocationService.swift in Sources */,
 				8DA5B1D725C621E4009272CD /* Reachability.swift in Sources */,
+				8DD3A00C25C6C1F40090B845 /* FavouriteCell.swift in Sources */,
 				8DF1A4E725C61101006B0261 /* HomeViewController.swift in Sources */,
 				8DF1A4E325C61101006B0261 /* AppDelegate.swift in Sources */,
 				8DA5B23125C641A7009272CD /* ReusableCell.swift in Sources */,

@@ -49,7 +49,7 @@ class CityViewController: UIViewController {
 }
 
 extension CityViewController: LocationResponseDelegate {
-    
+   
     func didRecieved(location: Location) {
         Queue.main {
             self.dateLabel?.text = location.date

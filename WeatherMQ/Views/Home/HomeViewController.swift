@@ -9,17 +9,16 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    @IBOutlet weak var placeLable: UILabel?
-    @IBOutlet weak var dateLabel: UILabel?
-    @IBOutlet weak var temperatureLabel: UILabel?
     @IBOutlet weak var windLabel: UILabel?
+    @IBOutlet weak var dateLabel: UILabel?
+    @IBOutlet weak var placeLable: UILabel?
     @IBOutlet weak var humidityLabel: UILabel?
     @IBOutlet weak var pressureLabel: UILabel?
+    @IBOutlet weak var temperatureLabel: UILabel?
     @IBOutlet weak var tableFavourites: UITableView?
-    @IBOutlet weak var fbButton: UIBarButtonItem!
-    
+
     var favourites = [FavouriteLocations]()
-    var tableHeaderNamae = "Saved Locations"
+    var tableHeaderNamae = "Your Saved Locations"
     
     lazy var homeViewModel : HomeViewModel = {
         let viewModel = HomeViewModel()
@@ -29,22 +28,9 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableFavourites?.tableFooterView = UIView()
+        navigationBarSetUp()
 
         NotificationCenter.default.addObserver(self, selector: #selector(contextObjectsDidChange(_:)), name: Notification.Name.NSManagedObjectContextObjectsDidChange, object: nil)
-
-        
-        // Set Image for bar button
-        let buttonSetting: UIButton = UIButton(type: .custom)
-        buttonSetting.setImage(UIImage(named: "icon_settings"), for: .normal)
-        buttonSetting.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
-        let barButtonSetting = UIBarButtonItem(customView: buttonSetting)
-        
-        let buttonLocation: UIButton = UIButton(type: .custom)
-        buttonLocation.addTarget(self, action: #selector(showMapView), for: .touchUpInside)
-        buttonLocation.setImage(UIImage(named: "icon_location"), for: .normal)
-        buttonLocation.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
-        let barButtonLocation = UIBarButtonItem(customView: buttonLocation)
-        self.navigationItem.rightBarButtonItems = [barButtonSetting, barButtonLocation]
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,13 +47,30 @@ class HomeViewController: UIViewController {
     
     func fetchLocationsFromDB () {
         self.favourites = CoreDataHelper.shared.fetch()
-        
         Queue.main {
             if self.favourites.isEmpty   {
                 self.tableHeaderNamae = "You have not saved any locations yet."
+            } else {
+                self.tableHeaderNamae = "Your favourite locations"
             }
             self.tableFavourites?.reloadData()
         }
+    }
+    
+    func navigationBarSetUp() {
+        // Set Image for bar button
+        let buttonSetting: UIButton = UIButton(type: .custom)
+        buttonSetting.setImage(UIImage(named: "icon_settings"), for: .normal)
+        buttonSetting.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
+        let barButtonSetting = UIBarButtonItem(customView: buttonSetting)
+        
+        let buttonLocation: UIButton = UIButton(type: .custom)
+        buttonLocation.addTarget(self, action: #selector(showMapView), for: .touchUpInside)
+        buttonLocation.setImage(UIImage(named: "icon_location"), for: .normal)
+        buttonLocation.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
+        let barButtonLocation = UIBarButtonItem(customView: buttonLocation)
+        self.navigationItem.rightBarButtonItems = [barButtonSetting, barButtonLocation]
+
     }
     
     @objc func showMapView() {
@@ -109,17 +112,8 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell: FavouriteCell = tableView.dequeueReusableCell(for: indexPath)
-        let fav: FavouriteLocations = self.favourites[indexPath.row]
-        
-        if let name = fav.name,
-              let locality = fav.locality,
-              let administrativeArea = fav.administrativeArea {
-            cell.textLabel?.text = name
-            cell.detailTextLabel?.text = locality +  ", " + administrativeArea
-
-        }
+        cell.configure(with: self.favourites[indexPath.row])
         return cell
     }
     
@@ -139,21 +133,9 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cityView:CityViewController = CityViewController.instance()
+        let cityView: CityViewController = CityViewController.instance()
         cityView.favouriteLocation = self.favourites[indexPath.row]
         self.present(cityView, animated: true, completion: nil)
     }
-}
-
-
-class FavouriteCell: UITableViewCell, Reusable {
-    
-    
-}
-
-
-class AddFavouriteCell: UITableViewCell, Reusable {
-    @IBOutlet weak var lbl: UILabel?
-    
 }
 
