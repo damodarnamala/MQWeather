@@ -8,8 +8,10 @@
 
 import Foundation
 
-final class HttpHandler {
-    class func request(with urlString: String, completionHandler: @escaping(Result<Data,APIError>) -> Void) {
+final class Http {
+    static let shared = Http()
+    
+    func request(with urlString: String, completionHandler: @escaping(Result<Data,APIError>) -> Void) {
         guard let url = URL(string: urlString) else {
             completionHandler(.failure(APIError.invalidUrl))
             return

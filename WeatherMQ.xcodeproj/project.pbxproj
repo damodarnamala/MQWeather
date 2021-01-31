@@ -14,12 +14,14 @@
 		8DA5B1B325C61A87009272CD /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA5B1B225C61A87009272CD /* Date.swift */; };
 		8DA5B1BE25C61DF3009272CD /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA5B1BD25C61DF3009272CD /* Queue.swift */; };
 		8DA5B1C525C62191009272CD /* HttpHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA5B1C325C62191009272CD /* HttpHandler.swift */; };
-		8DA5B1C625C62191009272CD /* WetherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA5B1C425C62191009272CD /* WetherAPI.swift */; };
 		8DA5B1CB25C621C6009272CD /* ReusableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA5B1CA25C621C6009272CD /* ReusableCell.swift */; };
 		8DA5B1D025C621D6009272CD /* UIViewController+extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA5B1CF25C621D6009272CD /* UIViewController+extention.swift */; };
 		8DA5B1D625C621E4009272CD /* LayoutAnchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA5B1D425C621E4009272CD /* LayoutAnchors.swift */; };
 		8DA5B1D725C621E4009272CD /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA5B1D525C621E4009272CD /* Reachability.swift */; };
 		8DA5B1E325C6225F009272CD /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA5B1E225C6225F009272CD /* Location.swift */; };
+		8DA5B20925C62863009272CD /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA5B20825C62863009272CD /* APIService.swift */; };
+		8DA5B21A25C62971009272CD /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA5B21925C62971009272CD /* WeatherService.swift */; };
+		8DA5B22225C630AB009272CD /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA5B22125C630AB009272CD /* Double.swift */; };
 		8DF1A4E325C61101006B0261 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF1A4E225C61101006B0261 /* AppDelegate.swift */; };
 		8DF1A4E725C61101006B0261 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF1A4E625C61101006B0261 /* HomeViewController.swift */; };
 		8DF1A4EA25C61101006B0261 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DF1A4E825C61101006B0261 /* Main.storyboard */; };
@@ -55,12 +57,14 @@
 		8DA5B1B225C61A87009272CD /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		8DA5B1BD25C61DF3009272CD /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		8DA5B1C325C62191009272CD /* HttpHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpHandler.swift; sourceTree = "<group>"; };
-		8DA5B1C425C62191009272CD /* WetherAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WetherAPI.swift; sourceTree = "<group>"; };
 		8DA5B1CA25C621C6009272CD /* ReusableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableCell.swift; sourceTree = "<group>"; };
 		8DA5B1CF25C621D6009272CD /* UIViewController+extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+extention.swift"; sourceTree = "<group>"; };
 		8DA5B1D425C621E4009272CD /* LayoutAnchors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutAnchors.swift; sourceTree = "<group>"; };
 		8DA5B1D525C621E4009272CD /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		8DA5B1E225C6225F009272CD /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		8DA5B20825C62863009272CD /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		8DA5B21925C62971009272CD /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
+		8DA5B22125C630AB009272CD /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		8DF1A4DF25C61101006B0261 /* WeatherMQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherMQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DF1A4E225C61101006B0261 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8DF1A4E625C61101006B0261 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +109,7 @@
 		8DA5B18625C6155F009272CD /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				8DA5B20725C62849009272CD /* Services */,
 				8DA5B1EA25C6233E009272CD /* Others */,
 				8DA5B1B125C61A7D009272CD /* Extentions */,
 				8DA5B1C225C62191009272CD /* Network */,
@@ -135,6 +140,7 @@
 				8DA5B1CF25C621D6009272CD /* UIViewController+extention.swift */,
 				8DA5B1CA25C621C6009272CD /* ReusableCell.swift */,
 				8DA5B1B225C61A87009272CD /* Date.swift */,
+				8DA5B22125C630AB009272CD /* Double.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -143,7 +149,6 @@
 			isa = PBXGroup;
 			children = (
 				8DA5B1C325C62191009272CD /* HttpHandler.swift */,
-				8DA5B1C425C62191009272CD /* WetherAPI.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -162,11 +167,20 @@
 				8DA5B18725C6156E009272CD /* Observable.swift */,
 				8DA5B1D425C621E4009272CD /* LayoutAnchors.swift */,
 				8DA5B1D525C621E4009272CD /* Reachability.swift */,
-				8DA5B18C25C615EF009272CD /* LocationService.swift */,
-				8DA5B19125C616A0009272CD /* GeoCoderService.swift */,
 				8DA5B1BD25C61DF3009272CD /* Queue.swift */,
 			);
 			path = Others;
+			sourceTree = "<group>";
+		};
+		8DA5B20725C62849009272CD /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				8DA5B18C25C615EF009272CD /* LocationService.swift */,
+				8DA5B19125C616A0009272CD /* GeoCoderService.swift */,
+				8DA5B20825C62863009272CD /* APIService.swift */,
+				8DA5B21925C62971009272CD /* WeatherService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		8DF1A4D625C61101006B0261 = {
@@ -366,9 +380,11 @@
 				8DF1A4E725C61101006B0261 /* HomeViewController.swift in Sources */,
 				8DF1A4E325C61101006B0261 /* AppDelegate.swift in Sources */,
 				8DA5B1CB25C621C6009272CD /* ReusableCell.swift in Sources */,
+				8DA5B20925C62863009272CD /* APIService.swift in Sources */,
+				8DA5B21A25C62971009272CD /* WeatherService.swift in Sources */,
 				8DA5B1BE25C61DF3009272CD /* Queue.swift in Sources */,
+				8DA5B22225C630AB009272CD /* Double.swift in Sources */,
 				8DA5B19225C616A0009272CD /* GeoCoderService.swift in Sources */,
-				8DA5B1C625C62191009272CD /* WetherAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

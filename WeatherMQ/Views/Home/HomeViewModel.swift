@@ -11,6 +11,8 @@ import CoreLocation
 protocol LocationResponseDelegate {
     func didFailed(with error: String)
     func didRecieved(location: Location)
+    func didRecieved(weather: WeatherResponse)
+
 }
 
 protocol HomeViewDlegate {
@@ -23,6 +25,8 @@ class HomeViewModel: HomeViewDlegate {
     var delegate: LocationResponseDelegate?
     private var geocoder: GeoCoderService?
     private var locationManager: LocationService?
+    
+    let weaterService = WeatherService.shared
     
     init(_ geoCoder: GeoCoderService = GeoCoderService.shared,
          _ locationManager: LocationService = LocationService.shared ) {
@@ -43,10 +47,10 @@ class HomeViewModel: HomeViewDlegate {
                           longitude: long) { placeMark in
             
             let location = Location(date: Date.today,
-                                         name: placeMark?.name,
-                                         locality: placeMark?.locality,
-                                         subLocality: placeMark?.subLocality,
-                                         administration: placeMark?.administrativeArea)
+                                    name: placeMark?.name,
+                                    locality: placeMark?.locality,
+                                    subLocality: placeMark?.subLocality,
+                                    administration: placeMark?.administrativeArea)
             
             self.delegate?.didRecieved(location: location)
         }
@@ -58,8 +62,19 @@ class HomeViewModel: HomeViewDlegate {
 extension HomeViewModel: LocationServiceDelegate {
     
     func tracingLocation(_ currentLocation: CLLocation) {
+        let coordinates = currentLocation.coordinate
         self.locationManager?.stopUpdatingLocation()
-        self.fetchLocation(with: currentLocation.coordinate)
+        self.fetchLocation(with: coordinates)
+        weaterService.fetch(for: coordinates) { (result) in
+            switch result {
+            case .success(let wether):
+                self.delegate?.didRecieved(weather: wether)
+            case .failure(let error):
+                print(error.localizedDescription)
+                self.delegate?.didFailed(with: error.localizedDescription)
+            }
+        }
+        
     }
     
     func tracingLocationDidFailWithError(_ error: NSError) {
@@ -67,8 +82,3 @@ extension HomeViewModel: LocationServiceDelegate {
     }
 }
 
-
-
-struct Weather {
-    var temperature: String?
-}

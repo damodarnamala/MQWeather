@@ -11,6 +11,7 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var placeLable: UILabel?
     @IBOutlet weak var dateLabel: UILabel?
+    @IBOutlet weak var temperatureLabel: UILabel?
 
         
     lazy var homeViewModel : HomeViewModel = {
@@ -44,4 +45,13 @@ extension HomeViewController: LocationResponseDelegate {
     func didFailed(with error: String) {
         
     }
+    
+    func didRecieved(weather: WeatherResponse) {
+        guard let temperature = weather.current?.temp else { return }
+        
+        Queue.main {
+            self.temperatureLabel?.text = "\(temperature.rounded().clean)° C"
+        }
+    }
 }
+

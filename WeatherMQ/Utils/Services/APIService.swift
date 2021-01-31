@@ -1,15 +1,15 @@
 //
-//  URLBuilder.swift
-//  Mobiquity-Test
+//  WeatherService.swift
+//  WeatherMQ
 //
 //  Created by Damodar, Namala (623-Extern) on 31/01/21.
 //
 
-
 import Foundation
+import CoreLocation
 
-enum WetherAPI: StringConvertable {
-    case bookmarked(String,String)
+enum APIService: StringConvertable {
+    case weather(CLLocationCoordinate2D)
     
     private var  baseUrl: String {
         return "https://api.openweathermap.org/data/2.5/onecall?"
@@ -21,8 +21,8 @@ enum WetherAPI: StringConvertable {
     
     var url: String {
         switch self {
-        case .bookmarked(let lat, let long):
-            let string = baseUrl + "lat=\(lat)&lon=\(long)&units=metric&appid=\(apppID)"
+        case .weather(let coord):
+            let string = baseUrl + "lat=\(coord.latitude)&lon=\(coord.longitude)&units=metric&appid=\(apppID)"
             print(string)
             return string
         }
