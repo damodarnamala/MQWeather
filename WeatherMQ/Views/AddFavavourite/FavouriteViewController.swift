@@ -11,7 +11,7 @@ import MapKit
 class FavouriteViewController: UIViewController {
     @IBOutlet weak var bookmarksMapView: MKMapView?
     var listOfLocations = [FavouriteLocations]()
-
+    
     lazy var favouriteViewModel: FavouriteViewModel = {
         let viewModel = FavouriteViewModel()
         return viewModel
@@ -19,15 +19,42 @@ class FavouriteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
         let longGesture = UILongPressGestureRecognizer(target: self,
                                                        action: #selector(addFavouriteLocation(longGesture:)))
         bookmarksMapView?.addGestureRecognizer(longGesture)
-
         // Do any additional setup after loading the view.
     }
     
-
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.showSavedLocations()
+    }
+    
+    func showSavedLocations() {
+        var pins = [MKPointAnnotation]()
+        self.listOfLocations = CoreDataHelper.shared.fetch()
+        for items in listOfLocations {
+            let name = items.name ?? ""
+            let locatily = items.locality ?? ""
+            let subLocatily = items.sublocality ?? ""
+            let administrative = items.administrativeArea ?? ""
+            let latitide = items.latitude ?? 0.0
+            let longitude = items.longitude ?? 0.0
+            
+            
+            let pinView: MKPointAnnotation = MKPointAnnotation()
+            pinView.coordinate = CLLocationCoordinate2D(latitude: latitide,
+                                                        longitude: longitude)
+            
+            pinView.title = name + ", " + locatily
+            pinView.subtitle = subLocatily + ", " + administrative
+            pins.append(pinView)
+        }
+        
+        self.bookmarksMapView?.addAnnotations(pins)
+    }
+    
     @objc func addFavouriteLocation(longGesture: UIGestureRecognizer) {
         // Do not generate pins many times during long press.
         if longGesture.state != .began {
@@ -50,7 +77,7 @@ class FavouriteViewController: UIViewController {
             
             pinView.title = name + ", " + locatily
             pinView.subtitle = subLocatily + ", " + administrative
-            self.listOfLocations.append(location)
+            CoreDataHelper.shared.insert(favourite: favLocation!)
             DispatchQueue.main.async {
                 self.bookmarksMapView?.addAnnotation(pinView)
             }
@@ -80,8 +107,16 @@ extension FavouriteViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView,
                  annotationView view: MKAnnotationView,
                  calloutAccessoryControlTapped control: UIControl) {
-        guard let annotation: MKAnnotation = view.annotation  else { return }
+        guard let annotation: MKAnnotation = view.annotation,
+              let title = annotation.title,
+              let name = title?.split(separator: ",").first else { return }
+
+        
+        guard let item: FavouriteLocations = self.listOfLocations.first(where: {$0.name! == name}) else {return}
+        CoreDataHelper.shared.delete(where: item)
+
         DispatchQueue.main.async {
+            
             mapView.removeAnnotation(annotation)
         }
     }

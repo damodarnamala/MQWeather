@@ -18,7 +18,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var tableFavourites: UITableView?
     @IBOutlet weak var fbButton: UIBarButtonItem!
     
-    var favourites = ["Home", "Favourite"]
+    var favourites = [FavouriteLocations]()
+    var tableHeaderNamae = "Saved Locations"
     
     lazy var homeViewModel : HomeViewModel = {
         let viewModel = HomeViewModel()
@@ -28,7 +29,9 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableFavourites?.tableFooterView = UIView()
-        
+
+        NotificationCenter.default.addObserver(self, selector: #selector(contextObjectsDidChange(_:)), name: Notification.Name.NSManagedObjectContextObjectsDidChange, object: nil)
+
         
         // Set Image for bar button
         let buttonSetting: UIButton = UIButton(type: .custom)
@@ -41,22 +44,30 @@ class HomeViewController: UIViewController {
         buttonLocation.setImage(UIImage(named: "icon_location"), for: .normal)
         buttonLocation.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
         let barButtonLocation = UIBarButtonItem(customView: buttonLocation)
-        //assign button to navigationbar
         self.navigationItem.rightBarButtonItems = [barButtonSetting, barButtonLocation]
-//        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 38, height: 38))
-//        imageView.contentMode = .scaleAspectFit
-//        
-//        let image = UIImage(named: "nav_icon")
-//        imageView.image = image
-//        navigationItem.titleView = imageView
-
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         homeViewModel.delegate = self
         homeViewModel.viewWillAppreare()
+        fetchLocationsFromDB()
+
+    }
+    
+    @objc func contextObjectsDidChange(_ notification: Notification) {
+        fetchLocationsFromDB()
+    }
+    
+    func fetchLocationsFromDB () {
+        self.favourites = CoreDataHelper.shared.fetch()
+        
+        Queue.main {
+            if self.favourites.isEmpty   {
+                self.tableHeaderNamae = "You have not saved any locations yet."
+            }
+            self.tableFavourites?.reloadData()
+        }
     }
     
     @objc func showMapView() {
@@ -64,6 +75,7 @@ class HomeViewController: UIViewController {
         let navController = UINavigationController(rootViewController: favourites)
         self.navigationController?.present(navController, animated: true, completion: nil)
     }
+    
 }
 
 
@@ -99,14 +111,33 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell: FavouriteCell = tableView.dequeueReusableCell(for: indexPath)
-        cell.textLabel?.text = "Bangalore"
-        cell.detailTextLabel?.text = "Koramangala"
+        let fav: FavouriteLocations = self.favourites[indexPath.row]
+        
+        if let name = fav.name,
+              let locality = fav.locality,
+              let administrativeArea = fav.administrativeArea {
+            cell.textLabel?.text = name
+            cell.detailTextLabel?.text = locality +  ", " + administrativeArea
+
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Saved locations"
+        return tableHeaderNamae
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            let databse = CoreDataHelper.shared
+            databse.delete(where: self.favourites[indexPath.row])
+        }
+    }
+
 }
 
 
