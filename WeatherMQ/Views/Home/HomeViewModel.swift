@@ -11,7 +11,7 @@ import CoreLocation
 protocol LocationResponseDelegate {
     func didFailed(with error: String)
     func didRecieved(location: Location)
-    func didRecieved(weather: WeatherResponse)
+    func didRecieved(weather: WeatherMesures)
 
 }
 
@@ -67,8 +67,23 @@ extension HomeViewModel: LocationServiceDelegate {
         self.fetchLocation(with: coordinates)
         weaterService.fetch(for: coordinates) { (result) in
             switch result {
-            case .success(let wether):
-                self.delegate?.didRecieved(weather: wether)
+            case .success(let weather):
+                
+                guard let temp = weather.current?.temp,
+                      let hummidity_val = weather.current?.humidity,
+                      let pressure_val = weather.current?.pressure,
+                      let wind_val = weather.current?.wind_speed
+                else { return }
+               
+                let temperature = temp.rounded().clean + "° C"
+                let humidity = hummidity_val.rounded().clean + " rh"
+                let pressure = pressure_val.rounded().clean + " kPa"
+                let wind = wind_val.rounded().clean + " mph"
+                let weatherMeasure = WeatherMesures(temp: temperature,
+                                             wind_speed: wind,
+                                             humidity: humidity,
+                                             pressure: pressure)
+                self.delegate?.didRecieved(weather: weatherMeasure)
             case .failure(let error):
                 print(error.localizedDescription)
                 self.delegate?.didFailed(with: error.localizedDescription)
@@ -81,4 +96,3 @@ extension HomeViewModel: LocationServiceDelegate {
         self.locationManager?.stopUpdatingLocation()
     }
 }
-

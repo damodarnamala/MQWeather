@@ -50,3 +50,11 @@ struct Current: Decodable {
 extension LosslessStringConvertible {
     var value: String { .init(self) }
 }
+
+
+struct WeatherMesures {
+    var temp: String
+    var wind_speed: String
+    var humidity: String
+    var pressure: String
+}
