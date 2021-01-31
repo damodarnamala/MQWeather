@@ -12,7 +12,6 @@ protocol LocationResponseDelegate {
     func didFailed(with error: String)
     func didRecieved(location: Location)
     func didRecieved(weather: WeatherMesures)
-
 }
 
 protocol HomeViewDlegate {

@@ -77,7 +77,9 @@ class FavouriteViewController: UIViewController {
             
             pinView.title = name + ", " + locatily
             pinView.subtitle = subLocatily + ", " + administrative
+            
             CoreDataHelper.shared.insert(favourite: favLocation!)
+          
             DispatchQueue.main.async {
                 self.bookmarksMapView?.addAnnotation(pinView)
             }

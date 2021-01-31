@@ -138,6 +138,11 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
         }
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cityView:CityViewController = CityViewController.instance()
+        cityView.favouriteLocation = self.favourites[indexPath.row]
+        self.present(cityView, animated: true, completion: nil)
+    }
 }
 
 
