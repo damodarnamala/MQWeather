@@ -348,14 +348,14 @@
                         <sections>
                             <tableViewSection headerTitle="" id="uUr-ap-ohj">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingCellTemp" rowHeight="64" id="hOu-4R-yeU" customClass="SettingCell" customModule="WeatherMQ" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SettingCellTemp" rowHeight="64" id="hOu-4R-yeU" customClass="SettingCell" customModule="WeatherMQ" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="39.5" width="414" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hOu-4R-yeU" id="jRh-uL-PyC">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="YNM-Pq-aU8">
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="YNM-Pq-aU8">
                                                     <rect key="frame" x="302" y="16.5" width="104" height="32"/>
                                                     <segments>
                                                         <segment title="°C"/>
@@ -367,9 +367,9 @@
                                                     </connections>
                                                 </segmentedControl>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperature Units" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m43-l1-j1B">
-                                                    <rect key="frame" x="20" y="23" width="127" height="18"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                                    <nil key="textColor"/>
+                                                    <rect key="frame" x="20" y="22" width="147.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                    <color key="textColor" red="0.37254901959999998" green="0.49019607840000001" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -382,7 +382,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingCell" rowHeight="64" id="icj-YY-OEG" customClass="SettingCell" customModule="WeatherMQ" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SettingCell" rowHeight="64" id="icj-YY-OEG" customClass="SettingCell" customModule="WeatherMQ" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="103.5" width="414" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="icj-YY-OEG" id="pVs-BK-ymp">
@@ -390,9 +390,9 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete all saved bookmarks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QHp-1h-7Lw">
-                                                    <rect key="frame" x="20" y="23" width="188" height="18"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                                    <nil key="textColor"/>
+                                                    <rect key="frame" x="20" y="22" width="217.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                    <color key="textColor" red="0.37254901959999998" green="0.49019607840000001" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ewR-zL-7UL">
@@ -416,6 +416,33 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SettingCell" textLabel="UlN-nt-4uf" detailTextLabel="JO7-6D-5iw" rowHeight="64" style="IBUITableViewCellStyleSubtitle" id="Myv-co-HjB" customClass="SettingCell" customModule="WeatherMQ" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="167.5" width="414" height="64"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Myv-co-HjB" id="jee-qa-BBc">
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="64"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Help" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UlN-nt-4uf">
+                                                    <rect key="frame" x="20" y="12" width="37" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                    <color key="textColor" red="0.37254901959999998" green="0.49019607840000001" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Check the video tutorial about the app." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JO7-6D-5iw">
+                                                    <rect key="frame" x="20" y="35.5" width="220.5" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Exg-Q1-zz4" kind="show" id="koY-TF-6wc"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -425,7 +452,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="Ztm-Xu-kNo">
-                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="FvH-Cl-GF0">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="FvH-Cl-GF0">
                             <connections>
                                 <action selector="backButtonAction" destination="vgU-PI-7Pb" id="PBM-hP-Etb"/>
                             </connections>
@@ -439,41 +466,21 @@
             </objects>
             <point key="canvasLocation" x="660.86956521739137" y="770.75892857142856"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="gr7-jC-oe5">
+        <!--Tutorial-->
+        <scene sceneID="qAh-WJ-lbj">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5cU-GI-B3v" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rJa-O9-ZvJ">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="vgU-PI-7Pb" kind="relationship" relationship="rootViewController" id="2Qe-B2-DGM"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0S6-NR-g9x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="HelpViewController" id="Exg-Q1-zz4" customClass="HelpViewController" customModule="WeatherMQ" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DgQ-UX-3nT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Va6-uR-dtp"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Tutorial" id="uWj-qb-8ZQ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pBl-vq-Pc3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-249.27536231884059" y="770.75892857142856"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Pjc-gd-eoj">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AeQ-rb-MM3" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Oj5-qX-qub">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="r51-ju-tnp" kind="relationship" relationship="rootViewController" id="np7-xK-Odu"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LNG-wC-eX6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2053.6231884057975" y="125.89285714285714"/>
+            <point key="canvasLocation" x="1642" y="771"/>
         </scene>
     </scenes>
     <resources>

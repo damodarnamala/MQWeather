@@ -41,6 +41,7 @@ class HomeViewController: UIViewController {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(contextObjectsDidChange(_:)),
                                                name: .NSManagedObjectContextObjectsDidChange, object: nil)
+       _ =   Date.after(days: 5)
     }
     
     override func viewWillAppear(_ animated: Bool) {

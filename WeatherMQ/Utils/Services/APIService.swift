@@ -23,14 +23,19 @@ enum APIService: StringConvertable {
         return SettingsDB.shared.getUnits()
     }
     
+    private var date: TimeInterval {
+        return Date.after(days: 5)
+    }
     
     var url: String {
         switch self {
         case .weather(let coord):
-            let string = baseUrl + "lat=\(coord.latitude)&lon=\(coord.longitude)&units=\(units)&appid=\(apppID)"
+            let string = baseUrl + "lat=\(coord.latitude)&lon=\(coord.longitude)&units=\(units)&dt=\(5)&appid=\(apppID)"
             print(string)
             return string
         }
         
     }
 }
+
+
