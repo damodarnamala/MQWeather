@@ -31,7 +31,8 @@ class SettingsViewController: UITableViewController {
         }
     }
    @IBAction func backButtonAction() {
-        self.navigationController?.dismiss(animated: true, completion: nil)
+        self.navigationController?.dismiss(animated: true,
+                                           completion: nil)
     }
     
     @IBAction func unitSettings(sender: UISegmentedControl) {
@@ -46,13 +47,19 @@ class SettingsViewController: UITableViewController {
     }
  
     @IBAction func deleteAllBookmarks(sender: UIButton) {
-        let alert = UIAlertController(title: "Warning !!", message: "Are you sure? would you like to delete all saved bookmarks. ", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (_) in
+        let alert = UIAlertController(title: AlertConstant.DBDelete.title,
+                                      message: AlertConstant.DBDelete.message,
+                                      preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Yes",
+                                      style: .default, handler: { (_) in
             CoreDataHelper.shared.deleteAllBookmarks()
         }))
-        alert.addAction(UIAlertAction(title: "No", style: .default, handler: { (_) in
+        alert.addAction(UIAlertAction(title: "No",
+                                      style: .default, handler: { (_) in
             alert.dismiss(animated: true, completion: nil)
         }))
         self.present(alert, animated: true, completion: nil)
     }
 }
+

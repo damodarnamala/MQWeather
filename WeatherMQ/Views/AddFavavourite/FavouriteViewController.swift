@@ -62,8 +62,9 @@ class FavouriteViewController: UIViewController {
         }
         
         let location = longGesture.location(in: self.bookmarksMapView)
-        let coordinates: CLLocationCoordinate2D = (bookmarksMapView?.convert(location,
-                                                                             toCoordinateFrom: bookmarksMapView))!
+        guard let coords = (bookmarksMapView?.convert(location,
+                                                      toCoordinateFrom: bookmarksMapView)) else { return }
+        let coordinates: CLLocationCoordinate2D = coords
         
         self.favouriteViewModel.getPlacemark(for: coordinates) { favLocation in
             guard let location = favLocation else { return }

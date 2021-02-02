@@ -45,7 +45,8 @@ class CityViewController: UIViewController {
         guard let latitude = self.favouriteLocation?.latitude,
               let longitude = self.favouriteLocation?.longitude else { return  }
         
-        let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        let location = CLLocationCoordinate2D(latitude: latitude,
+                                              longitude: longitude)
         self.cityViewModel.fetchLocation(with: location)
         self.cityViewModel.fecthWeather(for: location)
     }

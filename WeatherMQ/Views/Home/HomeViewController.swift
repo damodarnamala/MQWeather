@@ -22,14 +22,8 @@ class HomeViewController: UIViewController {
         sc.hidesNavigationBarDuringPresentation = false
         sc.searchResultsUpdater = self
         sc.dimsBackgroundDuringPresentation = false
-        
-        // Make sure the that the search bar is visible within the navigation bar.
         sc.searchBar.sizeToFit()
-        
-        // Include the search controller's search bar within the table's header view.
-        
         definesPresentationContext = true
-        
         return sc
     }()
     
@@ -44,7 +38,9 @@ class HomeViewController: UIViewController {
         self.tableFavourites?.tableHeaderView = searchController.searchBar
         self.tableFavourites?.tableFooterView = UIView()
         navigationBarSetUp()
-        NotificationCenter.default.addObserver(self, selector: #selector(contextObjectsDidChange(_:)), name: Notification.Name.NSManagedObjectContextObjectsDidChange, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(contextObjectsDidChange(_:)),
+                                               name: .NSManagedObjectContextObjectsDidChange, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -99,22 +95,27 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
         return searchController.isActive ? searchResults.count : favourites.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: FavouriteCell = tableView.dequeueReusableCell(for: indexPath)
         let favourite  = searchController.isActive ? searchResults[indexPath.row] : self.favourites[indexPath.row]
         cell.configure(with: favourite)
         return cell
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView,
+                   titleForHeaderInSection section: Int) -> String? {
         return self.homeViewModel.headerTitle().capitalized
     }
     
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    func tableView(_ tableView: UITableView,
+                   canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView,
+                   commit editingStyle: UITableViewCell.EditingStyle,
+                   forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
             let databse = CoreDataHelper.shared
             databse.delete(where: self.favourites[indexPath.row])
