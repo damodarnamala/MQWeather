@@ -29,7 +29,7 @@ class HelpViewController: UIViewController {
         player.leadingAnchor(equalTo: self.view.leadingAnchor, constant: 0)
         player.trailingAnchor(equalTo: self.view.trailingAnchor, constant: 0)
 
-        guard let path = Bundle.main.path(forResource: "How_to", ofType: "MP4") else {
+        guard let path = Bundle.main.path(forResource: "How_to", ofType: "mov") else {
             return
         }
         guard let url = URL(string: "file:/" + path) else {

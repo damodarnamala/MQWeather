@@ -114,13 +114,13 @@ extension FavouriteViewController: MKMapViewDelegate {
               let title = annotation.title,
               let name = title?.split(separator: ",").first else { return }
 
+        DispatchQueue.main.async {
+            mapView.removeAnnotation(annotation)
+        }
         
         guard let item: FavouriteLocations = self.listOfLocations.first(where: {$0.name! == name}) else {return}
         CoreDataHelper.shared.delete(where: item)
 
-        DispatchQueue.main.async {
-            
-            mapView.removeAnnotation(annotation)
-        }
+       
     }
 }

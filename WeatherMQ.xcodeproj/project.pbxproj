@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8D97F27C25C937C7006177BD /* How_to.MP4 in Resources */ = {isa = PBXBuildFile; fileRef = 8D97F27825C9370D006177BD /* How_to.MP4 */; };
+		8D97F28425C94130006177BD /* How_to.mov in Resources */ = {isa = PBXBuildFile; fileRef = 8D97F28325C94130006177BD /* How_to.mov */; };
 		8DA5B18825C6156E009272CD /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA5B18725C6156E009272CD /* Observable.swift */; };
 		8DA5B19225C616A0009272CD /* GeoCoderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA5B19125C616A0009272CD /* GeoCoderService.swift */; };
 		8DA5B1AD25C61848009272CD /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA5B1AC25C61848009272CD /* HomeViewModel.swift */; };
@@ -72,7 +72,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8D97F27825C9370D006177BD /* How_to.MP4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = How_to.MP4; sourceTree = "<group>"; };
+		8D97F28325C94130006177BD /* How_to.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = How_to.mov; sourceTree = "<group>"; };
 		8DA5B18725C6156E009272CD /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		8DA5B19125C616A0009272CD /* GeoCoderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoCoderService.swift; sourceTree = "<group>"; };
 		8DA5B1AC25C61848009272CD /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -306,7 +306,7 @@
 		8DD3A22425C929260090B845 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8D97F27825C9370D006177BD /* How_to.MP4 */,
+				8D97F28325C94130006177BD /* How_to.mov */,
 				8DD3A22D25C92FD30090B845 /* HelpContent.html */,
 			);
 			path = Resources;
@@ -471,7 +471,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DF1A4F225C61104006B0261 /* LaunchScreen.storyboard in Resources */,
-				8D97F27C25C937C7006177BD /* How_to.MP4 in Resources */,
+				8D97F28425C94130006177BD /* How_to.mov in Resources */,
 				8DF1A4EF25C61104006B0261 /* Assets.xcassets in Resources */,
 				8DF1A4EA25C61101006B0261 /* Main.storyboard in Resources */,
 				8DD3A22E25C92FD30090B845 /* HelpContent.html in Resources */,

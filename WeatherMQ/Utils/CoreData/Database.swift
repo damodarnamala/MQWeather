@@ -64,7 +64,7 @@ struct CoreDataHelper {
         guard let name = location.name, let locality = location.locality else { return }
         
         let fetchRequest: NSFetchRequest<Favourite> = Favourite.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "name == %@ && locality == %@ ", name, locality)
+        fetchRequest.predicate = NSPredicate(format: "name==%@", name, locality)
         let objects = try! context.fetch(fetchRequest)
         for obj in objects {
             context.delete(obj)
