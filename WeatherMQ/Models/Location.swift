@@ -14,3 +14,4 @@ struct Location {
     var subLocality: String?
     var administration: String?
 }
+

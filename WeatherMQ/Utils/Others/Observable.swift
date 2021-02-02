@@ -6,8 +6,7 @@
 //
 
 import Foundation
-
-public final class Observable<Value> {
+public final class ObservableObject<Value> {
     
     struct Observer<Value> {
         weak var observer: AnyObject?
@@ -35,7 +34,9 @@ public final class Observable<Value> {
     
     private func notifyObservers() {
         for observer in observers {
-            DispatchQueue.main.async { observer.block(self.value) }
+            Queue.main {
+                observer.block(self.value)
+            }
         }
     }
 }

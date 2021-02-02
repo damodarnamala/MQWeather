@@ -24,18 +24,30 @@
                                     <constraint firstAttribute="height" constant="200" id="upo-FE-agZ"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Finding the weather in favourite locations" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5no-2R-xQX">
+                                <rect key="frame" x="8" y="365" width="398" height="167"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="167" id="glp-P9-Gne"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                <color key="textColor" red="0.37254901959999998" green="0.49019607840000001" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="5no-2R-xQX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="5Yz-2b-Kgm"/>
                             <constraint firstItem="Fn1-fM-jkB" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="8Cr-V5-Fv6"/>
+                            <constraint firstItem="5no-2R-xQX" firstAttribute="top" secondItem="Fn1-fM-jkB" secondAttribute="bottom" constant="-6" id="b1C-fe-d3y"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5no-2R-xQX" secondAttribute="trailing" constant="8" id="bRb-Hz-Gat"/>
                             <constraint firstItem="Fn1-fM-jkB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="127" id="uBa-J9-xJG"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.173913043478265" y="375"/>
         </scene>
     </scenes>
     <resources>

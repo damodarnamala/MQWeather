@@ -75,6 +75,19 @@ struct CoreDataHelper {
             print(error.localizedDescription)
         }
     }
+    
+    func deleteAllBookmarks() {
+        let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Favourite")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+        do {
+            try context.execute(deleteRequest)
+            try context.save()
+            NotificationCenter.default.post(name: .NSManagedObjectContextObjectsDidChange, object: nil)
+        }
+        catch {
+            print ("There was an error")
+        }
+    }
 }
 
 extension String {

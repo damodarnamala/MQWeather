@@ -19,27 +19,18 @@ enum APIService: StringConvertable {
         return "fae7190d7e6433ec3a45285ffcf55c86"
     }
     
+    private var  units: String {
+        return SettingsDB.shared.getUnits()
+    }
+    
+    
     var url: String {
         switch self {
         case .weather(let coord):
-            let string = baseUrl + "lat=\(coord.latitude)&lon=\(coord.longitude)&units=metric&appid=\(apppID)"
+            let string = baseUrl + "lat=\(coord.latitude)&lon=\(coord.longitude)&units=\(units)&appid=\(apppID)"
             print(string)
             return string
         }
         
-    }
-    
-    enum Units {
-        case metric, imperial, standard
-        var type: String {
-            switch self {
-            case .imperial:
-                return "standard"
-            case .standard:
-                return "standard"
-            case .metric:
-                return "metric"
-            }
-        }
     }
 }

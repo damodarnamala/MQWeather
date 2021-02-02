@@ -34,27 +34,4 @@ class WeatherService {
     }
 }
 
-struct WeatherResponse: Decodable {
-    var lat: Double?
-    var lon: Double?
-    var current: Current?
-}
 
-struct Current: Decodable {
-    var temp: Double?
-    var wind_speed: Double?
-    var humidity: Double?
-    var pressure: Double?
-}
-
-extension LosslessStringConvertible {
-    var value: String { .init(self) }
-}
-
-
-struct WeatherMesures {
-    var temp: String
-    var wind_speed: String
-    var humidity: String
-    var pressure: String
-}
